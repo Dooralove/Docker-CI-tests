@@ -21,9 +21,11 @@ jobs:
 
     - name: Install dependencies
       run: pip install -r requirements.txt
+      run: pip install -r pytest
+
 
     - name: Run tests
-      run: test_sample  # Запуск тестов
+      run: pytest  # Запуск тестов
 
   docker-build:
     runs-on: ubuntu-latest
