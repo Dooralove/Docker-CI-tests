@@ -28,4 +28,16 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
+      # 4. Запускаем тесты
+      - name: Run tests
+        run: pytest
+docker-build:
+    runs-on: ubuntu-latest
+    needs: test  # Запустится только если тесты прошли
 
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Build Docker image
+      run: docker build -t my-docker-app .
